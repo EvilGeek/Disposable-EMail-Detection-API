@@ -14,8 +14,12 @@ db = Database()
 
 @app.route("/")
 def home_api():
-    """Health check endpoint."""
-    return jsonify({"status": True})
+    """Health check endpoint that lists all available endpoints."""
+    endpoints = {
+        "/api/disposable": "Check if an email or domain is disposable.",
+    }
+    return jsonify({"status": True, "available_endpoints": endpoints})
+
 
 @app.route("/api/disposable")
 @app.route("/api/disposable/")
